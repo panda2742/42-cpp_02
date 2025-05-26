@@ -22,7 +22,7 @@ class Fixed {
 	static const int _fractionalBits;
 
 	// Attributes
-	int	_numberValue;
+	int	_fixedValue;
 };
 
 #endif

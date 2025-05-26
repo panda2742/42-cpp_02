@@ -3,13 +3,13 @@
 
 // PUBLIC ===================
 // Constructors & Destructors
-Fixed::Fixed() : _numberValue(0) {
+Fixed::Fixed() : _fixedValue(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) {
 	std::cout << "Copy constructor called" << std::endl;
-	_numberValue = other.getRawBits();
+	_fixedValue = other.getRawBits();
 }
 
 Fixed::~Fixed() {
@@ -20,7 +20,7 @@ Fixed::~Fixed() {
 Fixed& Fixed::operator=(const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other) {
-		this->_numberValue = other.getRawBits();
+		this->_fixedValue = other.getRawBits();
 	}
 	return *this;
 }
@@ -28,13 +28,13 @@ Fixed& Fixed::operator=(const Fixed& other) {
 // Getters
 int Fixed::getRawBits(void) const {
 	std::cout << "getRawBits member function called" << std::endl;
-	return _numberValue;
+	return _fixedValue;
 }
 
 // Setters
 void Fixed::setRawBits(const int raw) {
 	std::cout << "setRawBits member function called" << std::endl;
-	_numberValue = raw;
+	_fixedValue = raw;
 }
 
 // PRIVATE =========
