@@ -1,28 +1,58 @@
 #ifndef FIXED_POINT_HPP
 # define FIXED_POINT_HPP
 
+/**
+ * Represents a fixed-point number.
+ */
 class Fixed {
 	public:
-	// Constructors & Destructors
+	/**
+	 * Initialize the fixed-point number instance and set its value to 0.
+	 */
 	Fixed(void);
+	/**
+	 * A copy constructor.
+	 * 
+	 * @param other The other instance to copy into the new one.
+	 */
 	Fixed(const Fixed& other);
+	/**
+	 * A destructor.
+	 */
 	~Fixed(void);
 
-	// Operators
+	/**
+	 * A copy assignment operator overload.
+	 * 
+	 * @param other The other instance to assign to the class instance.
+	 */
 	Fixed& operator=(const Fixed &other);
 
-	// Getters
+	/**
+	 * Return the raw value of the fixed-point number.
+	 * 
+	 * @return The raw value of the fixed-point number.
+	 */
 	int getRawBits(void) const;
 
-	// Setters
+	/**
+	 * Set the raw value of the fixed-point number.
+	 * 
+	 * @param raw The raw value to set.
+	 */
 	void setRawBits(const int raw);
 
 	private:
-	// Static attributes
+	/**
+	 * The number of fractional bits. Its value is set for every instance of
+	 * the class.
+	 */
 	static const int _fractionalBits;
 
-	// Attributes
-	int	_fixedValue;
+	/**
+	 * The raw value of the fixed-point number.
+	 */
+	int	_value;
 };
 
-#endif
+#endif /* FIXED_HPP */
