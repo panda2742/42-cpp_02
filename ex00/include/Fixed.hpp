@@ -1,5 +1,5 @@
-#ifndef FIXED_POINT_HPP
-# define FIXED_POINT_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 /**
  * Represents a fixed-point number.
