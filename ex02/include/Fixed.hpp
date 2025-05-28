@@ -9,6 +9,43 @@
 class Fixed {
 	public:
 	/**
+	 * Takes two references of Fixed-point number as parameters and returns a
+	 * reference to the smallest one.
+	 * 
+	 * @param f1 The first Fixed instance.
+	 * @param f2 The second Fixed instance.
+	 * @return A reference to the smallest one.
+	 */
+	static Fixed& min(Fixed& f1, Fixed& f2);
+	/**
+	 * Takes two references of constant Fixed-point number as parameters and
+	 * returns a reference to the smallest one.
+	 * 
+	 * @param f1 The first Fixed instance.
+	 * @param f2 The second Fixed instance.
+	 * @return A reference to the smallest one.
+	 */
+	static const Fixed& min(const Fixed& f1, const Fixed& f2);
+	/**
+	 * Takes two references of Fixed-point number as parameters and returns a
+	 * reference to the greatest one.
+	 * 
+	 * @param f1 The first Fixed instance.
+	 * @param f2 The second Fixed instance.
+	 * @return A reference to the greatest one.
+	 */
+	static Fixed& max(Fixed& f1, Fixed& f2);
+	/**
+	 * Takes two references of constant Fixed-point number as parameters and
+	 * returns a reference to the greatest one.
+	 * 
+	 * @param f1 The first Fixed instance.
+	 * @param f2 The second Fixed instance.
+	 * @return A reference to the greatest one.
+	 */
+	static const Fixed& max(const Fixed& f1, const Fixed& f2);
+
+	/**
 	 * Initialize the fixed-point number instance and set its value to 0.
 	 */
 	Fixed(void);

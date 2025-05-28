@@ -3,6 +3,30 @@
 #include <cmath>
 #include <iostream>
 
+Fixed& Fixed::min(Fixed& f1, Fixed& f2) {
+	if (f1 > f2)
+		return f2;
+	return f1;
+}
+
+const Fixed& Fixed::min(const Fixed& f1, const Fixed& f2) {
+	if (f1 > f2)
+		return f2;
+	return f1;
+}
+
+Fixed& Fixed::max(Fixed& f1, Fixed& f2) {
+	if (f1 > f2)
+		return f1;
+	return f2;
+}
+
+const Fixed& Fixed::max(const Fixed& f1, const Fixed& f2) {
+	if (f1 > f2)
+		return f1;
+	return f2;
+}
+
 Fixed::Fixed(void) : _value(0) {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -85,16 +109,20 @@ Fixed Fixed::operator*(const Fixed &other) const {
 }
 
 Fixed Fixed::operator/(const Fixed &other) const {
-	Fixed		res;
-
 	if (other._value == 0) {
 		std::cout << getMeme()
 				<< "\033[1;31mDIVISION BY ZERO? NOT IN THIS UNIVERSE.\033[0m"
 				<< std::endl;
+
 		return *this;
 	}
-	long long	tmp = (static_cast<long long>(_value) << _fractionalBits / other._value);
-	res._value = static_cast<int>(tmp);
+
+	Fixed		res;
+	long long	n1 = _value >> _fractionalBits;
+	long long	n2 = other._value >> _fractionalBits;
+	long long	tmp = n1 / n2;
+
+	res._value = static_cast<int>(tmp << _fractionalBits);
 
 	return res;
 }
