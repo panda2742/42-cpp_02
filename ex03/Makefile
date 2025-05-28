@@ -14,8 +14,8 @@ NAME	:=	fixed
 
 override SOURCE_DIR		:=	src/
 override INCLUDE_DIR	:=	include/
-INCLUDES				:=	fixed_utils Fixed
-SOURCES					:=	Fixed main
+INCLUDES				:=	fixed_utils Fixed Point
+SOURCES					:=	bsp Fixed main Point
 override SOURCE			:=	$(addprefix $(SOURCE_DIR), $(addsuffix .cpp, $(SOURCES)))
 override INCLUDE		:=	$(addprefix $(INCLUDE_DIR), $(addsuffix .hpp, $(INCLUDES)))
 
