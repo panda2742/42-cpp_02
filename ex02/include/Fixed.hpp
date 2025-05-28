@@ -42,68 +42,103 @@ class Fixed {
 	 * A copy assignment operator overload.
 	 * 
 	 * @param other The other instance to assign to the class instance.
+	 * @return A reference to this instance.
 	 */
 	Fixed& operator=(const Fixed &other);
 	/**
 	 * An equality comparison operator overload.
 	 * 
 	 * @param other The other instance to compare with the class instance.
+	 * @return Either true or false if the comparison is true.
 	 */
 	bool operator==(const Fixed& other) const;
 	/**
 	 * An inequality comparison operator overload.
 	 * 
 	 * @param other The other instance to compare with the class instance.
+	 * @return Either true or false if the comparison is true.
 	 */
 	bool operator!=(const Fixed& other) const;
 	/**
 	 * An inferior comparison operator overload.
 	 * 
 	 * @param other The other instance to compare with the class instance.
+	 * @return Either true or false if the comparison is true.
 	 */
 	bool operator<(const Fixed& other) const;
 	/**
 	 * A superior comparison operator overload.
 	 * 
 	 * @param other The other instance to compare with the class instance.
+	 * @return Either true or false if the comparison is true.
 	 */
 	bool operator>(const Fixed& other) const;
 	/**
 	 * An inferior or equal comparison operator overload.
 	 * 
 	 * @param other The other instance to compare with the class instance.
+	 * @return Either true or false if the comparison is true.
 	 */
 	bool operator<=(const Fixed& other) const;
 	/**
 	 * A superior or equal comparison operator overload.
 	 * 
 	 * @param other The other instance to compare with the class instance.
+	 * @return Either true or false if the comparison is true.
 	 */
 	bool operator>=(const Fixed& other) const;
 	/**
 	 * The addition operator.
 	 * 
 	 * @param other The other instance to add to the class instance.
+	 * @return A new Fixed instance containing the result value.
 	 */
 	Fixed operator+(const Fixed& other) const;
 	/**
 	 * The substraction operator.
 	 * 
 	 * @param other The other instance to add to the class instance.
+	 * @return A new Fixed instance containing the result value.
 	 */
 	Fixed operator-(const Fixed& other) const;
 	/**
 	 * The multiplication operator.
 	 * 
 	 * @param other The other instance to add to the class instance.
+	 * @return A new Fixed instance containing the result value.
 	 */
 	Fixed operator*(const Fixed& other) const;
 	/**
 	 * The division operator.
 	 * 
 	 * @param other The other instance to add to the class instance.
+	 * @return A new Fixed instance containing the result value.
 	 */
 	Fixed operator/(const Fixed& other) const;
+	/**
+	 * The pre-increment operator.
+	 * 
+	 * @return The Fixed instance containing the result value.
+	 */
+	Fixed& operator++(void);
+	/**
+	 * The post-increment operator.
+	 * 
+	 * @return A temporary Fixed instance containing the old value.
+	 */
+	Fixed operator++(int);
+	/**
+	 * The pre-decrement operator.
+	 * 
+	 * @return The Fixed instance containing the result value.
+	 */
+	Fixed& operator--(void);
+	/**
+	 * The post-decrement operator.
+	 * 
+	 * @return A temporary Fixed instance containing the old value.
+	 */
+	Fixed operator--(int);
 
 	/**
 	 * Convert the fixed-point number into a floating-point number and return
