@@ -22,3 +22,11 @@ Point& Point::operator=(const Point& other) {
 
 	return *this;
 }
+
+const Fixed& Point::x(void) const {
+	return _x;
+}
+
+const Fixed& Point::y(void) const {
+	return _y;
+}

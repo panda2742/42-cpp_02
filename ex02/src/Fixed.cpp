@@ -114,11 +114,11 @@ Fixed Fixed::operator/(const Fixed &other) const {
 		return *this;
 
 	Fixed		res;
-	long long	n1 = _value >> _fractionalBits;
-	long long	n2 = other._value >> _fractionalBits;
+	long long	n1 = static_cast<long long>(_value) << _fractionalBits;
+	long long	n2 = other._value;
 	long long	tmp = n1 / n2;
 
-	res._value = static_cast<int>(tmp << _fractionalBits);
+	res._value = static_cast<int>(tmp);
 
 	return res;
 }

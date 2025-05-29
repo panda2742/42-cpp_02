@@ -39,6 +39,19 @@ class Point {
 	 */
 	Point& operator=(const Point &other);
 
+	/**
+	 * Get the x coordinate of the point.
+	 * 
+	 * @return The x coordinate value.
+	 */
+	const Fixed&	x(void) const;
+	/**
+	 * Get the y coordinate of the point.
+	 * 
+	 * @return The y coordinate value.
+	 */
+	const Fixed&	y(void) const;
+
 	private:
 	/**
 	 * The x coordinate of the point.
