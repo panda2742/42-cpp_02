@@ -1,4 +1,3 @@
-#include "fixed_utils.hpp"
 #include "Fixed.hpp"
 #include <cmath>
 #include <iostream>
