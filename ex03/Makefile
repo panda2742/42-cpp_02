@@ -6,7 +6,7 @@
 #    By: ehosta <ehosta@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 15:02:31 by ehosta            #+#    #+#              #
-#    Updated: 2025/05/21 14:06:16 by ehosta           ###   ########.fr        #
+#    Updated: 2025/06/04 14:50:46 by ehosta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ override INCLUDE		:=	$(addprefix $(INCLUDE_DIR), $(addsuffix .hpp, $(INCLUDES)))
 
 BUILD_DIR		:=	.dist/
 override OBJ	:=	$(patsubst $(SOURCE_DIR)%.cpp, $(BUILD_DIR)%.o, $(SOURCE))
-override DEPS	:=	$(patsubst %.o, %.d, $(OBJ)))
+override DEPS	:=	$(patsubst %.o, %.d, $(OBJ))
 override DIRS	:=	$(sort $(dir $(NAME) $(OBJ) $(DEPS)))
 
 CPPFLAGS	:=	-Wall -Wextra -Werror -MMD -MP --std=c++98
