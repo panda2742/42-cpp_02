@@ -8,6 +8,13 @@ Fixed::Fixed(void) : _value(0) {
 
 Fixed::Fixed(const int value) {
 	std::cout << "Int constructor called" << std::endl;
+
+	if (value < -pow(2, (32 - _fractionalBits) - 1) || value > (pow(2, (32 - _fractionalBits))  - 1))
+	{
+		std::cout << "\e[32;2;100;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m" << std::endl;
+		_value = 0;
+		return;
+	}
 	_value = value << _fractionalBits;
 }
 
