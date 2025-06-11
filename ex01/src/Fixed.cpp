@@ -9,9 +9,13 @@ Fixed::Fixed(void) : _value(0) {
 Fixed::Fixed(const int value) {
 	std::cout << "Int constructor called" << std::endl;
 
-	if (value < -pow(2, (32 - _fractionalBits) - 1) || value > (pow(2, (32 - _fractionalBits))  - 1))
+	if (
+		value < -pow(2, (32 - _fractionalBits) - 1)
+		|| value > (pow(2, (32 - _fractionalBits))  - 1)
+	)
 	{
-		std::cout << "\e[32;2;100;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m" << std::endl;
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
 		_value = 0;
 		return;
 	}
@@ -20,6 +24,17 @@ Fixed::Fixed(const int value) {
 
 Fixed::Fixed(const float floatingValue) {
 	std::cout << "Float constructor called" << std::endl;
+
+	if (
+		floatingValue < -pow(2, (32 - _fractionalBits) - 1)
+		|| floatingValue > (pow(2, (32 - _fractionalBits))  - 1)
+	)
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
+		_value = 0;
+		return;
+	}
 	_value = static_cast<int>(roundf(floatingValue * (1 << _fractionalBits)));
 }
 

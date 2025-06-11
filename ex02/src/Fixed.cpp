@@ -33,10 +33,14 @@ Fixed::Fixed(void) : _value(0) {
 
 Fixed::Fixed(const int value) {
 	std::cout << "Int constructor called" << std::endl;
-	
-	if (value < -pow(2, (32 - _fractionalBits) - 1) || value > (pow(2, (32 - _fractionalBits))  - 1))
+
+	if (
+		value < -pow(2, (32 - _fractionalBits) - 1)
+		|| value > (pow(2, (32 - _fractionalBits))  - 1)
+	)
 	{
-		std::cout << "\e[32;2;100;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m" << std::endl;
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
 		_value = 0;
 		return;
 	}
@@ -45,6 +49,17 @@ Fixed::Fixed(const int value) {
 
 Fixed::Fixed(const float floatingValue) {
 	std::cout << "Float constructor called" << std::endl;
+
+	if (
+		floatingValue < -pow(2, (32 - _fractionalBits) - 1)
+		|| floatingValue > (pow(2, (32 - _fractionalBits))  - 1)
+	)
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
+		_value = 0;
+		return;
+	}
 	_value = static_cast<int>(roundf(floatingValue * (1 << _fractionalBits)));
 }
 
@@ -95,6 +110,16 @@ Fixed Fixed::operator+(const Fixed &other) const {
 
 	res._value = _value + other._value;
 
+	if (
+		res._value < -pow(2, (32 - _fractionalBits) - 1)
+		|| res._value > (pow(2, (32 - _fractionalBits))  - 1)
+	)
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
+		res._value = 0;
+	}
+
 	return res;
 }
 
@@ -103,6 +128,16 @@ Fixed Fixed::operator-(const Fixed &other) const {
 
 	res._value = _value - other._value;
 
+	if (
+		res._value < -pow(2, (32 - _fractionalBits) - 1)
+		|| res._value > (pow(2, (32 - _fractionalBits))  - 1)
+	)
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
+		res._value = 0;
+	}
+
 	return res;
 }
 
@@ -110,6 +145,17 @@ Fixed Fixed::operator*(const Fixed &other) const {
 	Fixed		res;
 
 	long long	tmp = static_cast<long long>(_value) * static_cast<long long>(other._value);
+
+	if (
+		tmp < -pow(2, (32 - _fractionalBits) - 1)
+		|| tmp > (pow(2, (32 - _fractionalBits))  - 1)
+	)
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
+		tmp = 0;
+	}
+
 	res._value = static_cast<int>(tmp >> _fractionalBits);
 
 	return res;
@@ -124,12 +170,31 @@ Fixed Fixed::operator/(const Fixed &other) const {
 	long long	n2 = other._value;
 	long long	tmp = n1 / n2;
 
+	if (
+		tmp < -pow(2, (32 - _fractionalBits) - 1)
+		|| tmp > (pow(2, (32 - _fractionalBits))  - 1)
+	)
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVER/UNDERFLOWING.\e[0m"
+			<< std::endl;
+		tmp = 0;
+	}
+
 	res._value = static_cast<int>(tmp);
 
 	return res;
 }
 
 Fixed& Fixed::operator++(void) {
+	if (_value > (pow(2, (32 - _fractionalBits))  - 1))
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVERFLOWING.\e[0m"
+			<< std::endl;
+		_value = -pow(2, (32 - _fractionalBits) - 1);
+
+		return *this;
+	}
+
 	++_value;
 
 	return *this;
@@ -137,12 +202,30 @@ Fixed& Fixed::operator++(void) {
 
 Fixed Fixed::operator++(int) {
 	Fixed	tmp = *this;
+
+	if (_value > (pow(2, (32 - _fractionalBits))  - 1))
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS OVERFLOWING.\e[0m"
+			<< std::endl;
+		_value = -pow(2, (32 - _fractionalBits) - 1);
+
+		return tmp;
+	}
+
 	++_value;
 
 	return tmp;
 }
 
 Fixed& Fixed::operator--(void) {
+	if (_value > -pow(2, (32 - _fractionalBits) - 1))
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS UNDERFLOWING.\e[0m"
+			<< std::endl;
+		_value = (pow(2, (32 - _fractionalBits))  - 1);
+
+		return *this;
+	}
 	--_value;
 
 	return *this;
@@ -150,6 +233,16 @@ Fixed& Fixed::operator--(void) {
 
 Fixed Fixed::operator--(int) {
 	Fixed	tmp = *this;
+
+	if (_value > -pow(2, (32 - _fractionalBits) - 1))
+	{
+		std::cout << "\e[38;2;200;0;0mVALUE IS UNDERFLOWING.\e[0m"
+			<< std::endl;
+		_value = (pow(2, (32 - _fractionalBits))  - 1);
+
+		return tmp;
+	}
+
 	--_value;
 
 	return tmp;

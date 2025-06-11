@@ -35,8 +35,7 @@ int main(void) {
 	const Point	a(Fixed(3.8f), Fixed(6.31f));
 	const Point	b(Fixed(2.18f), Fixed(2.75f));
 	const Point	c(Fixed(5.84f), Fixed(3.45f));
-	// const Point	point(Fixed(4.2f), Fixed(4.61f));
-	const Point	point(Fixed(4.7f), Fixed(5.05f));
+	const Point	point(Fixed(4.62f), Fixed(5.16f));
 
 	const bool	bspRes = bsp(a, b, c, point);
 	const bool	bcsRes = bcs(a, b, c, point);

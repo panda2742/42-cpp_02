@@ -34,18 +34,18 @@ bool bsp(const Point a, const Point b, const Point c, const Point point) {
 	/*
 	First and last step, we interpret the result of each product and, we can
 	conclude if the point is in/on the triangle based on those facts:
-	- Only one product can be null (= 0), it means the dot is on the associated
-	edge.
+	- No nullv alue (=0) is accepted. It means it is on a vertex or an edge, and
+	it is false.
 	- There cannot be a positive and a negative result. Each result should share
 	the same sign.
 	*/
-	bool	hasNeg = (crossAP < 0) || (crossBP < 0) || (crossCP < 0);
-	bool	hasPos = (crossAP > 0) || (crossBP > 0) || (crossCP > 0);
+	bool	hasNeg = (crossAP < 0) && (crossBP < 0) && (crossCP < 0);
+	bool	hasPos = (crossAP > 0) && (crossBP > 0) && (crossCP > 0);
 
 	/*
 	Then we return the result here by filtering the two booleans result.
 	*/
-	return !(hasNeg && hasPos);
+	return hasNeg || hasPos;
 }
 
 /**
@@ -142,7 +142,7 @@ bool bcs(const Point a, const Point b, const Point c, const Point point) {
 	/*
 	Then we interprate the result by following this unbreakable rule:
 	The point is in the ABC triangle if and only if every lambda result is
-	superior or equal to 0.
+	superior to 0.
 	*/
-	return lambda1 >= 0 && lambda2 >= 0 && lambda3 >= 0;
+	return lambda1 > 0 && lambda2 > 0 && lambda3 > 0;
 }

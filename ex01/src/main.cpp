@@ -7,7 +7,7 @@ int main(void) {
 	const Fixed	c(42.42f);
 	const Fixed	d(b);
 
-	a = Fixed(1234.4321f);
+	a = Fixed(-123423425455.4321f);
 
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
